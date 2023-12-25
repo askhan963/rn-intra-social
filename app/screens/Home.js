@@ -10,7 +10,7 @@ const Home = ({ navigation }) => {
         const unsubscribe = onAuthStateChanged(FirebaseAuth, user => {
             if (user) {
                 // User is signed in, navigate to MainApp
-                navigation.navigate('MainApp');
+                navigation.replace('Posts');
             } else {
                 // No user is signed in, stay on the Home screen
                 // Optionally, navigate to the Login screen if you want immediate redirection

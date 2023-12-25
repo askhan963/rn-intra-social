@@ -43,7 +43,7 @@ function TopTabNavigation({ navigation }) {
             FirebaseAuth.signOut().then(() => navigation.replace('Login'));
           }}
           title="Logout"
-          color="#000" // Color for the button text
+          color="#128C7E" 
         />
       </View>
     );
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingVertical: 10,
     backgroundColor: '#fff',
   },
   headerTitle: {
