@@ -11,27 +11,37 @@ const Stack = createNativeStackNavigator();
 
 const AppNavigation = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // New loading state
 
   useEffect(() => {
-    const unsubscribe = FirebaseAuth.onAuthStateChanged(user => {
-      setIsAuthenticated(!!user);
-    });
+    // Delay for the splash screen effect
+    const splashScreenDelay = setTimeout(() => {
+      FirebaseAuth.onAuthStateChanged(user => {
+        setIsAuthenticated(!!user);
+        setIsLoading(false); // Stop loading after checking auth state
+      });
+    }, 2000); // Delay of 2 seconds for the splash screen
 
-    return unsubscribe;
+    return () => {
+      clearTimeout(splashScreenDelay);
+    };
   }, []);
+
+  if (isLoading) {
+    // Show the Home (splash) screen while loading
+    return <Home />;
+  }
 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {isAuthenticated ? (
-          // When authenticated, show the top tab navigation
           <Stack.Screen name="MainApp" component={TopTabNavigation} />
         ) : (
-          // For unauthenticated users, show the authentication flow
+          // Navigate to Login if not authenticated
           <>
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
           </>
         )}
       </Stack.Navigator>

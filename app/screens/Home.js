@@ -6,22 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 const Home = ({ navigation }) => {
   
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(FirebaseAuth, user => {
-            if (user) {
-                // User is signed in, navigate to MainApp
-                navigation.replace('Posts');
-            } else {
-                // No user is signed in, stay on the Home screen
-                // Optionally, navigate to the Login screen if you want immediate redirection
-                 navigation.replace('Login');
-            }
-        });
-
-        // Clean up the listener when the component is unmounted
-        return () => unsubscribe();
-    }, [navigation]);
-
+ 
 
     return (
         <View style={styles.container}>

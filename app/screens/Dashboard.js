@@ -7,29 +7,32 @@ import {  limit, query, where, orderBy, onSnapshot, serverTimestamp } from 'fire
 const Dashboard = ({ navigation }) => {
     const [users, setUsers] = useState([]);
     // const imgUrl = 'https://placekitten.com/640/360'
+
     useEffect(() => {
-        fetchUsers();
+        const currentUserId = FirebaseAuth.currentUser?.uid;
+        const usersQuery = query(collection(FirebaseFireStore, "users"));
+        
+        const unsubscribeUsers = onSnapshot(usersQuery, async (snapshot) => {
+            const usersList = await Promise.all(snapshot.docs.map(async (doc) => {
+                if (doc.data().uid === currentUserId) return null;
+                let user = { ...doc.data(), id: doc.id };
+                user = await appendLastMessage(user, currentUserId);
+                return user;
+            }));
+    
+            // Filter out null values and sort
+            const filteredAndSortedUsers = usersList.filter(user => user).sort((a, b) => {
+                let timeA = a.lastMessageTimestamp ? a.lastMessageTimestamp.seconds : 0;
+                let timeB = b.lastMessageTimestamp ? b.lastMessageTimestamp.seconds : 0;
+                return timeB - timeA;
+            });
+    
+            setUsers(filteredAndSortedUsers);
+        });
+    
+        return () => unsubscribeUsers();
     }, []);
-
-    const fetchUsers = async () => {
-        try {
-            const currentUserId = FirebaseAuth.currentUser?.uid;
-            const usersSnapshot = await getDocs(collection(FirebaseFireStore, "users"));
-            const usersList = usersSnapshot.docs
-                .map(doc => ({ ...doc.data(), id: doc.id })) // Here, id is the Firestore document ID
-                .filter(user => user.uid !== currentUserId); // Use uid for comparison
-                for (const user of usersList) {
-                    await appendLastMessage(user, currentUserId);
-                }
-                // console.log(usersList)
-                setUsers(usersList);
-        } catch (error) {
-            console.error("Error fetching users: ", error);
-            Alert.alert("Error", "There was an error fetching the users.");
-        }
-    };
-    // new
-
+    
     const appendLastMessage = async (user, currentUserId) => {
         const chatId = generateChatId(currentUserId, user.uid);
         const lastMessageQuery = query(
@@ -38,17 +41,24 @@ const Dashboard = ({ navigation }) => {
             orderBy('createdAt', 'desc'),
             limit(1)
         );
+    
         const lastMessageSnapshot = await getDocs(lastMessageQuery);
         if (!lastMessageSnapshot.empty) {
             const lastMessageData = lastMessageSnapshot.docs[0].data();
             user.lastMessage = lastMessageData.text;
-            user.lastMessageTime = lastMessageData.createdAt.toDate().toLocaleString();
+            user.lastMessageTimestamp = lastMessageData.createdAt;
+            user.lastMessageTime = lastMessageData.createdAt && typeof lastMessageData.createdAt.toDate === 'function'
+                ? lastMessageData.createdAt.toDate().toLocaleString()
+                : 'Date not available';
         } else {
             user.lastMessage = 'No messages';
+            user.lastMessageTimestamp = null;
             user.lastMessageTime = '';
-        }
+        } 
+        return user;
     };
-
+    
+    
     const generateChatId = (currentUserId, otherUserId) => {
         return [currentUserId, otherUserId].sort().join('_');
     };

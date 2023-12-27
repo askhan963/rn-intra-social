@@ -71,21 +71,26 @@ const Chat = ({ route }) => {
             orderBy('createdAt', 'desc')
         );
 
-        // Listen for real-time updates to the messages
         const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
             const fetchedMessages = snapshot.docs.map(doc => {
-                // Check if createdAt is a timestamp before converting it to a Date object
-                const createdAt = doc.data().createdAt ? doc.data().createdAt.toDate() : new Date();
+                // Check if createdAt is a valid Firestore Timestamp before converting
+                let createdAt;
+                if (doc.data().createdAt && typeof doc.data().createdAt.toDate === 'function') {
+                    createdAt = doc.data().createdAt.toDate();
+                } else {
+                    // If createdAt is not a valid timestamp, use the current date as a fallback
+                    createdAt = new Date();
+                }
                 return {
                     _id: doc.id,
                     text: doc.data().text,
                     createdAt: createdAt,
                     user: doc.data().user
                 };
-            }); // Reverse the order for GiftedChat
+            });
             setMessages(fetchedMessages);
         });
-        
+    
         // Unsubscribe from the listener when the component unmounts
         return () => unsubscribe();
     }, [chatId]);
