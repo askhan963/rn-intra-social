@@ -1,6 +1,3 @@
-Certainly! Below is a detailed README markdown for your React Native - Intra Social Chat App, incorporating all the specified elements such as Firebase configuration, steps for running the app, dependencies, and features of the app.
-
-```markdown
 # React Native - Intra Social Chat App
 
 This is a React Native project for an Intra Social Chat App, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
@@ -109,7 +106,7 @@ Contributions are always welcome. Please read the contribution guidelines first.
 
 ---
 
-Generated with ♥ by [M. Awais Khan, Adnan Fahad & Hammad Ali Khan]
+Generated with ♥ by <bold>M. Awais Khan, Adnan Fahad & Hammad Ali Khan</bold>
 ```
 
 Feel free to modify or add any additional sections as per the specifics of your project.
