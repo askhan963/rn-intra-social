@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from 'react';
 // import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
-// import { FirebaseAuth, FirebaseFireStore } from '../../firebaseConfig'; 
+// import { FirebaseAuth, FirebaseFireStore } from '../../firebaseConfig';
 // import { collection, getDocs } from 'firebase/firestore';
 // import {  limit, query, where, orderBy, onSnapshot, serverTimestamp } from 'firebase/firestore';
 
@@ -26,7 +26,6 @@
 //                 let timeB = b.lastMessageTimestamp ? b.lastMessageTimestamp.seconds : 0;
 //                 return timeB - timeA; // Sort in descending order
 //             });
-            
 //             setUsers(usersList);
 //         });
 //         return () => unsubscribe();
@@ -74,7 +73,6 @@
 //             user.lastMessageTime = '';
 //         }
 //     };
-    
 
 //     const generateChatId = (currentUserId, otherUserId) => {
 //         return [currentUserId, otherUserId].sort().join('_');
@@ -84,7 +82,6 @@
 //         // console.log('Navigating to Chat with UID:', item.uid);
 //         navigation.navigate('Chat', { otherUserId: item.uid });
 //     };
-    
 
 //     return (
 //         <View style={styles.container}>
@@ -93,8 +90,8 @@
 //                 data={users}
 //                 keyExtractor={item => item.id}
 //                 renderItem={({ item }) => (
-                    
-//                     <TouchableOpacity 
+
+//                     <TouchableOpacity
 //                         style={styles.item}
 //                         onPress={() => navigateToChat(item)}
 //                     >

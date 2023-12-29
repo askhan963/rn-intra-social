@@ -1,29 +1,31 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button, Text, View, StyleSheet } from 'react-native';
-import { FirebaseAuth } from '../../firebaseConfig';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Button, Text, View, StyleSheet} from 'react-native';
+import {FirebaseAuth} from '../../firebaseConfig';
 import Chat from '../screens/Chat';
 import Dashboard from '../screens/Dashboard';
 import PostScreen from '../screens/PostScreen';
 import UserProfile from '../screens/UserProfile';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
+import AllPostsScreen from '../screens/AllPostsScreen';
 const Tab = createMaterialTopTabNavigator();
 const DashboardStack = createNativeStackNavigator();
 
 function DashboardStackNavigator() {
   return (
     <DashboardStack.Navigator>
-      <DashboardStack.Screen 
-        name="Chats" 
-        component={Dashboard} 
-        options={{ 
+      <DashboardStack.Screen
+        name="Chats"
+        component={Dashboard}
+        options={{
           title: 'Chats',
-          headerShown: false
-      }}
+          headerShown: false,
+        }}
       />
-      <DashboardStack.Screen 
-        name="Chat" 
+      <DashboardStack.Screen
+        name="Chat"
         component={Chat}
         // Add other screen options here if needed
       />
@@ -31,19 +33,19 @@ function DashboardStackNavigator() {
   );
 }
 
-function TopTabNavigation({ navigation }) {
+function TopTabNavigation({navigation}) {
   // Create a custom header that will be used across all tabs
   function CustomHeader() {
     return (
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Intra Social App</Text>
+        <Text style={styles.headerTitle}>Intra Office Social App</Text>
         <Button
           onPress={() => {
             // Implement logout functionality
             FirebaseAuth.signOut().then(() => navigation.replace('Login'));
           }}
           title="Logout"
-          color="#128C7E" 
+          color='#4c669f'
         />
       </View>
     );
@@ -53,18 +55,31 @@ function TopTabNavigation({ navigation }) {
     <>
       <CustomHeader />
       <Tab.Navigator initialRouteName="Posts">
-        <Tab.Screen name="Posts" component={PostScreen} options={{ title: 'Posts' }} />
-<Tab.Screen 
-        name="DashboardStack" 
-        component={DashboardStackNavigator} 
-        options={({ route }) => ({
-          title: 'Chats',
-          tabBarStyle: {
-            display: getTabBarVisibility(route) ? 'flex' : 'none',
-          },
-        })}
-      />
-        <Tab.Screen name="Profile" component={UserProfile} options={{ title: 'Profile' }} />
+        <Tab.Screen
+          name="Posts"
+          component={PostScreen}
+          options={{title: 'New Post'}}
+        />
+        <Tab.Screen
+          name="AllPosts"
+          component={AllPostsScreen}
+          options={{title: 'Posts'}}
+        />
+        <Tab.Screen
+          name="DashboardStack"
+          component={DashboardStackNavigator}
+          options={({route}) => ({
+            title: 'Chats',
+            tabBarStyle: {
+              display: getTabBarVisibility(route) ? 'flex' : 'none',
+            },
+          })}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={UserProfile}
+          options={{title: 'Profile'}}
+        />
       </Tab.Navigator>
     </>
   );
@@ -90,11 +105,8 @@ function getTabBarVisibility(route) {
   const routeName = getFocusedRouteNameFromRoute(route) ?? 'Chats';
   if (routeName === 'Chat') {
     return false; // When on the 'Chat' screen, return false to hide the tab bar
-  }
-  else
-  {
+  } else {
     return true; // Show the tab bar on other screens
   }
- 
 }
 export default TopTabNavigation;

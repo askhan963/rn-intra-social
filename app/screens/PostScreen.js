@@ -1,81 +1,144 @@
-import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TextInput, Alert } from 'react-native';
+import { Button, ProgressBar, Card, Title, Paragraph } from 'react-native-paper';
+import LinearGradient from 'react-native-linear-gradient';
+import ImageProgress from 'react-native-image-progress';
+import { FirebaseApp, FirebaseAuth, FirebaseFireStore } from '../../firebaseConfig';
+import { getFirestore, collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
 
-const PostScreen = () => {
-  // State to hold like status
-  const [liked, setLiked] = useState(false);
+const firestore = getFirestore(FirebaseApp);
 
-  // Example post data
-  const post = {
-    userName: 'John Doe',
-    userImageUrl: 'https://placekitten.com/640/360', // Replace with actual user image URL
-    postTime: '2 hours ago',
-    caption: 'Enjoying the beautiful scenery!',
-    imageUrl: 'https://placekitten.com/640/360', // Replace with actual post image URL
+const NewPostScreen = () => {
+  const [postContent, setPostContent] = useState('');
+  const [userName, setUserName] = useState('default');
+  const [imageURL, setImageURL] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      const user = FirebaseAuth.currentUser;
+      if (user) {
+        const usersRef = collection(FirebaseFireStore, 'users');
+        const q = query(usersRef, where('uid', '==', user.uid));
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          const userDoc = querySnapshot.docs[0].data();
+          setUserName(userDoc.name);
+        }
+      }
+    };
+
+    fetchUserName();
+  }, []);
+
+  const handlePostSubmit = async () => {
+    if (!postContent.trim()) {
+      Alert.alert('Error', 'Please enter post content.');
+      return;
+    }
+
+    try {
+      const postData = {
+        userId: userName,
+        content: postContent,
+        timestamp: serverTimestamp(),
+        likeCount: 0,
+        imageURL: imageURL || '',
+      };
+
+      await addDoc(collection(firestore, 'posts'), postData);
+
+      Alert.alert('Success', 'Post submitted successfully!');
+      console.log('Post:', postData);
+
+      setPostContent('');
+      setImageURL('');
+    } catch (error) {
+      console.error('Error creating post:', error);
+      Alert.alert('Error', 'Failed to submit post. Please try again.');
+    }
   };
 
-  // Function to handle like button press
-  const handleLikePress = () => {
-    setLiked(!liked);
+  const handleImageLoadStart = () => {
+    setLoading(true);
+  };
+
+  const handleImageLoadEnd = () => {
+    setLoading(false);
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image source={{ uri: post.userImageUrl }} style={styles.profilePic} />
-        <View>
-          <Text style={styles.userName}>{post.userName}</Text>
-          <Text style={styles.postTime}>{post.postTime}</Text>
-        </View>
-      </View>
-      <Text style={styles.caption}>{post.caption}</Text>
-      <Image source={{ uri: post.imageUrl }} style={styles.postImage} />
-      <TouchableOpacity style={styles.likeButton} onPress={handleLikePress}>
-        <Text style={styles.likeButtonText}>{liked ? 'Unlike' : 'Like'}</Text>
-      </TouchableOpacity>
-    </View>
+    <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}>
+      <Card style={styles.card}>
+        <Card.Content>
+          <TextInput
+            style={styles.input}
+            placeholder="Write your post..."
+            multiline
+            value={postContent}
+            onChangeText={setPostContent}
+          />
+          {imageURL ? (
+            <ImageProgress
+              source={{ uri: imageURL }}
+              style={styles.image}
+              indicator={ProgressBar}
+              onLoadStart={handleImageLoadStart}
+              onLoadEnd={handleImageLoadEnd}
+            />
+          ) : null}
+          <TextInput
+            style={styles.input}
+            placeholder="Enter image URL (optional)"
+            value={imageURL}
+            onChangeText={setImageURL}
+          />
+        </Card.Content>
+        <Card.Actions style={styles.cardActions}>
+          <Button
+            mode="contained"
+            style={styles.submitButton}
+            onPress={handlePostSubmit}
+            loading={loading}
+            disabled={loading}
+          >
+            Post
+          </Button>
+        </Card.Actions>
+      </Card>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor:'blue'
   },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
+  card: {
+    margin: 16,
+    borderRadius: 16,
+    overflow: 'hidden',
   },
-  profilePic: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 10,
+  input: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 8,
+    padding: 8,
+    marginBottom: 16,
   },
-  userName: {
-    fontWeight: 'bold',
-  },
-  postTime: {
-    fontSize: 12,
-    color: 'grey',
-  },
-  caption: {
-    fontSize: 16,
-    padding: 10,
-  },
-  postImage: {
+  image: {
     width: '100%',
-    height: 300,
+    height: 200,
+    borderRadius: 8,
+    marginBottom: 16,
   },
-  likeButton: {
-    padding: 10,
-    alignItems: 'center',
+  submitButton: {
+    backgroundColor:'#4c669f',
+    borderRadius: 8,
   },
-  likeButtonText: {
-    fontSize: 16,
-    color: '#007bff',
+  cardActions: {
+    justifyContent: 'flex-end',
   },
 });
 
-export default PostScreen;
+export default NewPostScreen;

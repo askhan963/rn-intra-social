@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, {useState, useEffect} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TopTabNavigation from './TopTabNavigation';
 import Home from '../screens/Home';
 import Register from '../screens/Register';
 import Login from '../screens/Login';
-import { FirebaseAuth } from '../../firebaseConfig';
+import {FirebaseAuth} from '../../firebaseConfig';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,7 +34,7 @@ const AppNavigation = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         {isAuthenticated ? (
           <Stack.Screen name="MainApp" component={TopTabNavigation} />
         ) : (
