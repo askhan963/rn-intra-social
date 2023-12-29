@@ -14,7 +14,6 @@ To start Metro, run the following command from the _root_ of your React Native p
 npm start
 
 
-
 ## Step 2: Start your Application
 
 Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
@@ -26,9 +25,7 @@ Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _roo
 npm run android
 
 
-
 ## Screens
-
- 
+The Screens are
 ![Screebs](https://github.com/askhan963/rn-intra-social/blob/main/Screenshot%202023-12-30%20003801.png?raw=true "Title")
 
