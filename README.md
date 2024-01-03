@@ -93,6 +93,21 @@ Here are some screenshots of the app:
 
   <!-- Image 2 -->
   <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+ <!-- Image 3 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+
+ <!-- Image 4 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/newpost.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+
+ <!-- Image 5 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/posts.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+
+ <!-- Image 6 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/profile.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+ <!-- Image 7 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/chat.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+ <!-- Image 8 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/chatInside.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
 
 </div>
 
