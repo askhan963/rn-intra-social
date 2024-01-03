@@ -83,6 +83,10 @@ Here are some screenshots of the app:
 
 ![Screenshots](https://github.com/askhan963/rn-intra-social/blob/main/Screenshot%202023-12-30%20003801.png?raw=true "App Screenshots")
 
+### Splash Screen
+
+![Splash](https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true "App Screenshots")
+
 ## Project Structure
 
 - `src`: Contains the source code for the application.
