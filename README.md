@@ -77,13 +77,7 @@ To run the app on an iOS device or emulator (MacOS only):
 npm run ios
 ```
 
-## Screens
-
-Here are some screenshots of the app:
-
-![Screenshots](https://github.com/askhan963/rn-intra-social/blob/main/Screenshot%202023-12-30%20003801.png?raw=true "App Screenshots")
-
-### All Screens
+## All Screens
 
 <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around; align-items: center; padding: 10px;">
 
