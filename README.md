@@ -83,21 +83,24 @@ Here are some screenshots of the app:
 
 ![Screenshots](https://github.com/askhan963/rn-intra-social/blob/main/Screenshot%202023-12-30%20003801.png?raw=true "App Screenshots")
 
-### Splash Screen
-<div style="display:flex,
-   flex-direction: row
-   ">
-   <div>![Splash](https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true "App Screenshots")</div>
-   <div>![Splash](https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true "App Screenshots")</div>
+### All Screens
 
-   <div>![Splash](https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true "App Screenshots")</div>
-   <div></div>
-   <div></div>
-   <div></div>
-   <div></div>
-   <div></div>
-   
+<div style="display:flex; flex-direction: row; align-items: center; justify-content: center;">
+
+  <!-- Image 1 -->
+  <div style="margin-right: 10px;">
+     <h3> Splash </h3>
+    <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  </div>
+
+  <!-- Image 2 -->
+  <div>
+     <h3> Register </h3>
+    <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/register.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  </div>
+
 </div>
+
 
 
 ## Project Structure
