@@ -89,12 +89,12 @@ Here are some screenshots of the app:
 <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
 
   <!-- Image 1 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/Screenshot%202024-01-03%20145851.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
 
   <!-- Image 2 -->
   <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
  <!-- Image 3 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/register.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
 
  <!-- Image 4 -->
   <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/newpost.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
