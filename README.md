@@ -85,31 +85,34 @@ Here are some screenshots of the app:
 
 ### All Screens
 
-
-<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around; align-items: center; padding: 10px;">
 
   <!-- Image 1 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/Screenshot%202024-01-03%20145851.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/Screenshot%202024-01-03%20145851.png?raw=true" alt="Splash" title="App Screenshots" style="width: 200px; margin: 10px;"/>
 
   <!-- Image 2 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
- <!-- Image 3 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/register.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" style="width: 200px; margin: 10px;"/>
 
- <!-- Image 4 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/newpost.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  <!-- Image 3 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/register.png?raw=true" alt="Splash" title="App Screenshots" style="width: 200px; margin: 10px;"/>
 
- <!-- Image 5 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/posts.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  <!-- Image 4 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/newpost.png?raw=true" alt="Splash" title="App Screenshots" style="width: 200px; margin: 10px;"/>
 
- <!-- Image 6 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/profile.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
- <!-- Image 7 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/chat.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
- <!-- Image 8 -->
-  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/chatInside.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
+  <!-- Image 5 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/posts.png?raw=true" alt="Splash" title="App Screenshots" style="width: 200px; margin: 10px;"/>
+
+  <!-- Image 6 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/profile.png?raw=true" alt="Splash" title="App Screenshots" style="width: 200px; margin: 10px;"/>
+
+  <!-- Image 7 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/chat.png?raw=true" alt="Splash" title="App Screenshots" style="width: 200px; margin: 10px;"/>
+
+  <!-- Image 8 -->
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/chatInside.png?raw=true" alt="Splash" title="App Screenshots" style="width: 200px; margin: 10px;"/>
 
 </div>
+
 
 
 
