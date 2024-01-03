@@ -85,21 +85,17 @@ Here are some screenshots of the app:
 
 ### All Screens
 
-<div style="display:flex; flex-direction: row; align-items: center; justify-content: center;">
+
+<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
 
   <!-- Image 1 -->
-  <div style="margin-right: 10px;">
-     <h3> Splash </h3>
-    <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="200"/>
-  </div>
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
 
   <!-- Image 2 -->
-  <div>
-     <h3> Register </h3>
-    <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/register.png?raw=true" alt="Register" title="App Screenshots" width="200"/>
-  </div>
+  <img src="https://github.com/askhan963/rn-intra-social/blob/main/Screenshots/splash.png?raw=true" alt="Splash" title="App Screenshots" width="300"/>
 
 </div>
+
 
 
 
